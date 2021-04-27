@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap');
+/* navbar */
+.card{
+    margin: 180px;
+    width: 220%;
+    height: 80%;
+    float: left;
+    justify-content: left;
+    align-items: left;
+    margin-left: 0px;
+    text-align: left;
+    font-family: 'Quicksand', sans-serif;
+    margin-top: 60px;
+    box-shadow: 2px 3px 3px 1px grey;
+}
+.form-label{
+    margin-left: 50px;
+    font-family: 'Quicksand', sans-serif;
+    color: grey;
+}
+.form-control{
+    width: 80%;
+    text-align: center;
+    margin-left: 50px;
+    border-radius: 10px;
+}
+#buttons{
+    font-weight: bolder;
+    width: 175%;
+    margin-left: 40px;
+    margin-bottom: -150px;
+    border-radius: 10px;
+    background-color: rgb(45, 209, 39);
+    border: none;
+    margin-top: -300px;
+}
+ #buttons:hover{
+     background-color:rgb(35, 145, 31);
+ }
+.login{
+    text-align: center;
+    margin: 10px;
+}
+.daftar{
+    text-align: center;
+    margin: 10px;
+    margin-bottom: 2px;
+    color: grey;
+    font-weight: bold;
+}
+.daftarmember{
+    font-weight: bold;
+    color: rgb(45, 209, 39);
+    cursor: pointer;
+    text-decoration: none;
+}
+.daftarmember:hover{
+    color:rgb(39, 160, 35);
+}
+
+
+/* logo navbar */
+.logoset{
+    width: 200px;
+    margin-left: 450px;
+}
+
+/* image login */
+.imagelogin{
+    width: 35%;
+    height: 35%;
+    float: right;
+    margin-bottom: -700px;
+    margin-right: 80px;
+    margin-top: 100px;
+}
+/* Daftar Member */
+.mendaftar{
+    text-align: center;
+    color: grey;
+    margin-top: -23px;
+}
+.syarat{
+    color: rgb(47, 236, 41);
+    font-weight: bold;
+}
+/* Sewa lahan */
+.rows{
+    font-family: 'Quicksand', sans-serif;
+    font-weight: bold;
+    text-align: center;
+    float: right;
+    margin-top: 400px;
+    margin-right:  200px;
+}
+.sewalahan{
+    font-family: 'Quicksand', sans-serif;
+    font-weight: bold;
+}
+.gabung{
+    font-family: 'Quicksand', sans-serif;
+    font-weight: bold;
+    color: grey;
+    font-size: 12px;
+}
+#checks1{
+    margin-left: 55px;
+
+}

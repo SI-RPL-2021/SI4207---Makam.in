@@ -1,0 +1,88 @@
+/* Css Sewa Jasa */
+/* image login */
+.imagelogin{
+    width: 42%;
+    height: 42%;
+    float: right;
+    margin-bottom: -700px;
+    margin-right: -10px;
+    margin-top: 100px;
+}
+.penyewaan{
+    text-align: center;
+}
+/* alert */
+.alerts1{
+    margin-top: -12px;
+    text-align: center;
+}
+#sewajasaalert{
+    width: 520px;
+    text-align: center;
+    height: 30px;
+    border-radius: 10px;
+    color: red;
+    font-weight: bold;
+    margin-left: 28px;
+}
+.cardsnew{
+        width: 140%;
+        height: 505px;
+        float: left;
+        justify-content: left;
+        align-items: left;
+        margin-left: 0px;
+        text-align: left;
+        font-family: 'Quicksand', sans-serif;
+        margin-top: 60px;
+        box-shadow: 2px 3px 3px 1px grey;
+        border-radius: 10px;
+}
+#cardsjasa{
+ width: 220%;
+ height: 380px;
+ margin-top: 5px;
+ margin-left: -15px;
+ border-radius: 10px;
+ box-shadow: 1px 1px 1px 1px grey ;
+ background-color:rgb(193, 241, 190);
+ border-color: rgb(193, 241, 190);;
+}
+#kunjungans{
+    text-align: center;
+    font-size: 41px;
+    font-weight: bold;
+}
+#pelayananmakam{
+    text-align: center;
+}
+#btnsewajasa{
+    margin-bottom: -100px;
+    margin-left: 180px;
+    border-radius: 10px;
+    background-color: rgb(45, 209, 39);
+    border-color: rgb(45, 209, 39);
+    width: 230px;
+    font-weight: bold;
+}
+.alerts2{
+    text-align: center;
+    margin-top: -16px;
+    font-size: 24px;
+}
+#hargaa{
+    width: 310px;
+    height: 30px;
+    margin-left: 135px;
+    margin-top: -10px;
+    font-weight: bold;
+    color: red;
+}
+.per{
+    font-size: 10px;
+    font-weight: bold;
+}
+#btnsewajasa:hover{
+    background-color: rgb(35, 145, 31);
+    border-color:rgb(35, 145, 31);
+}

@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap');
+.imageadmins{
+    width: 20%;
+    margin-left: 40px;
+}
+.imageadmins1{
+    width: 20%;
+    margin-left: 400px;
+    margin-top: -186px;
+}
+.imageadmins2{
+    width: 20%;
+    margin-left: 807px;
+    margin-top: -232px;
+}
+.datagraf{
+    font-family: 'Quicksand', sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+    text-align:  center;
+    margin: 170px;
+}
+.graf{
+    margin-top: -320px;
+}
+h3{
+    margin-left: -740px;
+    font-size: 18px;
+    text-align: center;
+    margin-top: -290px;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: bold;
+    margin-bottom: 13px;
+}
+.ajuan1{
+    margin-left: 10px;
+    font-size: 18px;
+    margin-top: -82px;
+    text-align: center;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: bold;
+}
+.ajuan2{
+    margin-left: 840px;
+    font-size: 18px;
+    margin-top: -122px;
+    text-align: center;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: bold;
+}
+#back{
+    width: 150px;
+    background-color: rgb(45, 209, 39);
+    border-color:rgb(45, 209, 39);
+    font-family: 'Quicksand', sans-serif;
+    font-weight: bold;
+    margin-bottom: -250px;
+    border-radius: 10px;
+}
+#back:hover{
+    background-color: rgb(35, 145, 31);
+    border-color:rgb(35, 145, 31);
+}

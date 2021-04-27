@@ -1,0 +1,141 @@
+.team-container{
+    width: 100%;
+    height: auto;
+    margin-bottom: -250px;
+}
+.text{
+    text-align: center;
+    margin-top: 40px;
+    color: red;
+    margin-top: 40px;
+    font-weight: 550;
+    text-transform: uppercase;
+    text-align: center;
+}
+.row{
+    width:100%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-items: center;
+    justify-content: center;
+}
+.profile-card{
+    background-color: white;
+    width: 300px;
+    height: 330px;
+    margin: 100px 42px -60px 10px;
+    box-shadow: 3px 3px 3px 3px grey;
+    border-radius: 10px;
+}
+.profile-content{
+    padding: 15px;
+}
+/* image */
+.card-img-top{
+    width: 100%;
+    margin: -5px;
+    border-radius: 10px;
+    text-align: center;
+    margin-left: 0px;
+}
+.card-img-top1{
+    width: 100%;
+    margin: -5px;
+    border-radius: 10px;
+    text-align: center;
+    margin-left: 0px;
+    height: 160px;
+}
+.profile-img{
+    text-align: center;
+}
+
+/* Card title */
+.tpu{
+    font-weight: bold;
+}
+.card-title{
+    font-size: 13px;
+    font-family: 'Quicksand', sans-serif;
+    margin-top: 10px;
+}
+.card-titles{
+    font-size: 13px;
+    font-family: 'Quicksand', sans-serif;
+    margin-top: 10px;
+}
+/* Card text */
+.card-text{
+        font-size: 13px;
+        font-family: 'Quicksand', sans-serif;
+        margin-top: -10px;
+    }
+
+.alamat{
+    margin-top: -20px;
+}
+
+/* dropdown */
+.dropdown-item:hover {
+    color: white;
+    background-color: rgb(45, 209, 39);
+}
+.dropdown-toggles1{
+  border-radius: 10px;
+  background-color: white;
+  border-color: rgb(45, 209, 39);
+}
+#dropsd {
+    margin-left: -80px;
+    margin-top: -145px;
+    font-weight: bold;
+    font-family: 'Quicksand', sans-serif;
+}
+.dropdown:hover>.dropdown-menu {
+  display: block;
+}
+.btn-danger{
+  width: 160px;
+  height: 35px;
+  margin-top: 150px;
+}
+#menudrop{
+  width: 120px;
+  font-weight: bold;
+  font-family: 'Quicksand', sans-serif;
+  margin-top: -3px;
+}
+#dropdownMenuButton19{
+  background-color: white;
+  border-color: rgb(45, 209, 39);
+  color: black;
+  font-weight: bold;
+  font-family: 'Quicksand', sans-serif;
+}
+#boldsa{
+  font-weight: bold;
+  font-family: 'Quicksand', sans-serif;
+}
+.bi-alarm{
+    float: left;
+    color: rgb(45, 209, 39);
+}
+.bi-chevron-down{
+    float: right;
+    color: rgb(45, 209, 39);
+}
+#btn-primaryzlanjut{
+    margin-bottom: -320px;
+    margin-left: 150px;
+    width: 150px;
+    border-radius: 10px;
+    background-color: rgb(45, 209, 39);
+    border-color: rgb(45, 209, 39);
+}
+
+#btn-primaryzlanjut:hover{
+    background-color: rgb(35, 145, 31); 
+    border-color: rgb(35, 145, 31); 
+}

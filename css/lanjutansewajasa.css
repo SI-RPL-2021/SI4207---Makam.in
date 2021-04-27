@@ -1,0 +1,275 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap');
+.card-titleq{
+    text-align: center;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: bold;
+    float: center;
+    font-size: 46px;
+}
+.imagelogin2{
+    width: 25%;
+    height: 40%;
+    bottom: 120%;
+    right: 20%;
+    margin-bottom: -700px;
+    margin-right: -10px;
+    margin-top: 200px;
+    z-index: 2;
+    position: absolute;
+}
+#cardlanjutan{
+    width: 260%;
+    height: 600px;
+    margin-top: 40px;
+    box-shadow: 2px 3px 3px 1px grey;
+}
+#lanjutanbtn{
+    width: 20%;
+    margin-bottom: -560px;
+    margin-left: 870px;
+    border-radius: 10px;
+    background-color: rgb(45, 209, 39);
+    border-color: rgb(45, 209, 39);
+    font-weight: bold;
+    font-family: 'Quicksand', sans-serif;
+}
+#labelsewa1{
+    width: 39%;
+    position: absolute;
+    bottom: 60%;
+    border-radius: 10px;
+    border-color:rgb(45, 209, 39);
+    left: 1.5%;
+
+}
+#labelsewa2{
+  width: 39%;
+  position: absolute;
+  bottom: 75%;
+  border-radius: 10px;
+  border-color:rgb(45, 209, 39);
+  left: 1.5%;
+}
+.namalabel{
+    position: absolute;
+    left: 50%;
+    top:14%;
+    color:rgb(45, 209, 39);
+    font-weight: bold;
+    font-family: 'Quicksand', sans-serif;
+}
+.namalabel1{
+  position: absolute;
+  top: 29.5%;
+  left: 1%;
+  color:rgb(45, 209, 39);
+  font-weight: bold;
+  font-family: 'Quicksand', sans-serif;
+}
+.namalabels{
+    position: absolute;
+    top: 43%;
+    left:1%;
+    color:rgb(45, 209, 39);
+    font-weight: bold;
+    font-family: 'Quicksand', sans-serif;
+}
+.hm{
+  width: 40%;
+  top: 15%;
+  left: 1%;
+  position: absolute;
+  font-weight: bold;
+  font-family: 'Quicksand', sans-serif;
+  color:rgb(45, 209, 39);
+}
+.bintang{
+    color: red;
+    font-weight: bold;
+}
+#dropdownsewa{
+width: 450px;
+height: 40px;
+border-radius: 10px;
+margin-left: 8px;
+margin: 15px;
+background-color: white;
+border-color: rgb(45, 209, 39);
+}
+#dropdownsewa::after{
+    border-color:rgb(45, 209, 39);
+}
+#logodrop{
+    float: right;
+    font-weight: bold;
+    color:rgb(45, 209, 39);
+}
+
+/* Combobox */
+.select-box {
+    display: flex;
+    width: 36.5%;
+    flex-direction: column;
+    
+  }
+  
+  .select-box .options-container {
+    background-color:rgb(45, 209, 39);
+    color: #f5f6fa;
+    max-height: 0;
+    width: 38.5%;
+    opacity: 0;
+    transition: all 0.4s;
+    border-radius: 8px;
+    overflow: hidden;
+    border-color: rgb(45, 209, 39);
+    order: 1;
+    font-weight: bold;
+    font-family: 'Quicksand', sans-serif;
+    top: 55%;
+    position: absolute;
+    left: 1.7%;
+  }
+  
+  .selected {
+    border: 2px solid rgb(45, 209, 39);
+    background-color:white;
+    border-radius: 10px;
+    width: 112%;
+    height: 40px;
+    color: rgb(45, 209, 39);
+    position: relative;
+    border-color: rgb(45, 209, 39);
+    order: 0;
+    bottom: -220px;
+    left: -2%;
+  }
+  
+  .block{
+      margin-left: -10px;
+      font-weight: bold;
+      font-family: 'Quicksand', sans-serif;
+      margin-top: -5px;
+      font-size: 16px;
+  }
+  .selected::after {
+    content: "";
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    height: 100%;
+    width: 32px;
+    right: 10px;
+    top: 5px;
+    font-family: 'Quicksand', sans-serif;
+    transition: all 0.4s;
+    font-weight: bold;
+  }
+  
+  .select-box .options-container.active {
+    max-height: 240px;
+    opacity: 1;
+    overflow-y: scroll;
+  }
+  
+  .select-box .options-container.active + .selected::after {
+    transform: rotateX(180deg);
+    top: -6px;
+  }
+  
+  .select-box .options-container::-webkit-scrollbar {
+    width: 8px;
+    background: #0d141f;
+    border-radius: 0 8px 8px 0;
+  }
+  
+  .select-box .options-container::-webkit-scrollbar-thumb {
+    background: #525861;
+    border-radius: 0 8px 8px 0;
+  }
+  
+  .select-box .option,
+  .selected {
+    padding: 12px 24px;
+    cursor: pointer;
+  }
+  
+  .select-box .option:hover {
+    background-color:rgb(35, 145, 31);
+    font-weight: bold;
+    font-family: 'Quicksand', sans-serif;
+  }
+  
+  .select-box label {
+    cursor: pointer;
+  }
+  
+  .select-box .option .radio {
+    display: none;
+  }
+ #panah{
+      float: right;
+  }
+
+  /* Combobox 2 */
+
+.dropdown-item:hover {
+    color: white;
+    background-color: rgb(45, 209, 39);
+}
+.dropdown-toggles{
+  border-radius: 10px;
+  background-color: white;
+  border-color: rgb(45, 209, 39);
+  
+}
+#drops {
+    position: absolute;
+    top: 18%;
+    left: 50%;
+    font-weight: bold;
+    font-family: 'Quicksand', sans-serif;
+    
+}
+.dropdown:hover>.dropdown-menu {
+  display: block;
+}
+.btn-danger{
+  width: 470px;
+  height: 36px;
+}
+#menudrop{
+  width: 470px;
+  font-weight: bold;
+  font-family: 'Quicksand', sans-serif;
+  margin-top: -3px;
+  
+}
+#dropdownMenuButton19{
+  background-color: white;
+  border-color: rgb(45, 209, 39);
+}
+#boldsa{
+  font-weight: bold;
+  font-family: 'Quicksand', sans-serif;
+}
+
+  /* button bawah */
+
+  #buttonslanjutan{
+      width: 30%;
+      position: absolute;
+      top: 90%;
+      left: 60%;
+      border-radius: 10px;
+      background-color: rgb(45, 209, 39);
+      border-color: rgb(45, 209, 39);
+      font-weight: bold;
+      font-family: 'Quicksand', sans-serif;
+  }
+  #buttonslanjutan:hover{
+      background-color: rgb(35, 145, 31);
+  }
+  #makams{
+    margin-left: 600px;
+  }

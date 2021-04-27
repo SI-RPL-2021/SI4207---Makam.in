@@ -1,0 +1,554 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap');
+#cardverif{
+    width: 420px;
+    height: 540px;
+    margin-top: 20px;
+    
+}
+#cardverif1{
+    width: 420px;
+    height: 540px;
+    margin-top: 20px;
+    margin-left: 180px;
+}
+.imageadminverif{
+    width: 80px;
+    margin-top: 100px;
+    margin-left: 450px;
+}
+.dokumenuser{
+    text-align: center;
+    font-weight: bold;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 16px;
+    margin-left: 100px;
+    margin-top: -30px;
+}
+.kotak{
+    width: 220px;
+    background: rgb(221, 217, 217);
+    height: 130px;
+    border-radius: 20px;
+    margin-left: 70px;
+}
+.kotak1{
+    width: 220px;
+    background: rgb(221, 217, 217);
+    height: 130px;
+    border-radius: 20px;
+    margin-left: 80px;
+}
+.userverifs{
+    width: 100px;
+    margin-left: 65px;
+    margin-top: 10px;
+}
+.userverifs2{
+    width: 100px;
+    margin-left: 65px;
+    margin-top: 10px;
+}
+.dadang{
+    font-weight: bold;
+    font-family: 'Quicksand', sans-serif;
+    margin-left: 70px;
+}
+.makams{
+    font-weight: bold;
+    font-family: 'Quicksand', sans-serif;
+    margin-left: 70px;
+    
+}
+.datauser{
+    font-family: 'Quicksand', sans-serif;
+    margin-left: 70px;
+    font-size: 15px;
+    margin-top: -10px;
+}
+#verifbtn{
+    margin: 8px;
+    margin-left: 210px;
+    width: 170px;
+    border-radius: 20px;
+    
+}
+.identitas{
+    margin-top: 40px;
+    margin-bottom: 35px;
+    font-weight: bold;
+    font-family: 'Quicksand', sans-serif;
+    color: rgb(45, 209, 39);
+}
+.identitas1{
+    margin-bottom: 15px;
+    font-weight: bold;
+    font-family: 'Quicksand', sans-serif;
+    margin-top: -10px;
+    color: rgb(45, 209, 39);
+}
+.identitas2{
+    margin-bottom: 25px;
+    font-weight: bold;
+    font-family: 'Quicksand', sans-serif;
+    margin-top: 25px;
+    color: rgb(45, 209, 39);
+}
+/* popup */
+.popup .overlay {
+  position:fixed;
+  top:0px;
+  left:0px;
+  width:100vw;
+  height:100vh;
+  z-index:1;
+  display:none;
+  
+}
+ 
+.popup .content {
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%) scale(0);
+  background:#fff;
+  width:500px;
+  height:250px;
+  z-index:2;
+  text-align:center;
+  padding:20px;
+  box-sizing:border-box;
+  font-family:"Open Sans",sans-serif;
+}
+.popup .okbtn {
+  cursor:pointer;
+  position:absolute;
+  right:20px;
+  top:20px;
+  width:500px;
+  height:300px;
+  color:#fff;
+  font-size:25px;
+  font-weight:600;
+  line-height:30px;
+  text-align:center;
+  border-radius:50%;
+  border: none;
+}
+.submitbtn{
+  margin-top: -550px;
+  z-index: 995;
+}
+.popup.active .overlay {
+  display:block;
+  border: none;
+}
+ 
+.popup.active .content {
+  transition:all 300ms ease-in-out;
+  transform:translate(-50%,-50%) scale(1);
+}
+button {
+  position:absolute;
+  top:445px;
+  left:32%;
+  transform:translate(-50%,-50%);
+  padding:15px;
+  font-size:16px;
+  border:2px solid #222;
+  color:white;
+  text-transform:uppercase;
+  font-weight:600;
+  background:rgb(45, 209, 39);
+  border-radius: 10px;;
+  width: 160px;
+  height: 40px;
+  border-color:rgb(45, 209, 39);
+}
+button:hover{
+    background-color: rgb(35, 145, 31);
+    border-color: rgb(35, 145, 31);
+}
+#jajal:hover{
+    background-color: rgb(35, 145, 31);
+    border-color: rgb(35, 145, 31);
+}
+#ketigabtn:hover{
+    background-color: rgb(35, 145, 31);
+    border-color: rgb(35, 145, 31);
+}
+#keempatbtn:hover{
+    background-color: rgb(35, 145, 31);
+    border-color: rgb(35, 145, 31);
+}
+#kelimabtn:hover{
+    background-color: rgb(35, 145, 31);
+    border-color: rgb(35, 145, 31);
+}
+#keenambtn:hover{
+    background-color: rgb(35, 145, 31);
+    border-color: rgb(35, 145, 31);
+}
+/* 2 */
+.popups .overlays {
+    position:fixed;
+    top:0px;
+    left:0px;
+    width:100vw;
+    height:100vh;
+    background:rgba(0,0,0,0.7);
+    z-index:1;
+    display:none;
+  }
+   
+  .popups .contents {
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%) scale(0);
+    background:#fff;
+    width:500px;
+    height:250px;
+    z-index:2;
+    text-align:center;
+    padding:20px;
+    box-sizing:border-box;
+    font-family:"Open Sans",sans-serif;
+  }
+   
+  
+   
+  .popups.active .overlays {
+    display:block;
+  }
+   
+  .popups.active .contents {
+    transition:all 300ms ease-in-out;
+    transform:translate(-50%,-50%) scale(1);
+  }
+   
+  #jajal {
+    position:absolute;
+    top:500px;
+    left:32%;
+    transform:translate(-50%,-50%);
+    padding:15px;
+    font-size:16px;
+    color:white;
+    text-transform:uppercase;
+    font-weight:600;
+    background:rgb(45, 209, 39);
+    border-radius: 10px;;
+    width: 160px;
+    height: 40px;
+    border-color:rgb(45, 209, 39);
+  }
+
+  /* ketiga */
+  .popups1 .overlays1 {
+    position:fixed;
+    top:0px;
+    left:0px;
+    width:100vw;
+    height:100vh;
+    z-index:1;
+    display:none;
+  }
+   
+  .popups1 .contents1 {
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%) scale(0);
+    background:#fff;
+    width:500px;
+    height:250px;
+    z-index:2;
+    text-align:center;
+    padding:20px;
+    box-sizing:border-box;
+    font-family:"Open Sans",sans-serif;
+  }
+   
+  .popups1 .close-btns1 {
+    cursor:pointer;
+    position:absolute;
+    right:170px;
+    width:160px;
+    height:40px;
+    background:#222;
+    color:#fff;
+    font-size:25px;
+    font-weight:600;
+    line-height:30px;
+    text-align:center;
+    margin-top: 150px;
+    border-radius: 10px;
+    background-color: rgb(45, 209, 39);
+  }
+   
+  .oks{
+    font-size: 16px;
+  }
+   
+  .popups1.active .overlays1 {
+    display:block;
+  }
+   
+  .popups1.active .contents1 {
+    transition:all 300ms ease-in-out;
+    transform:translate(-50%,-50%) scale(1);
+  }
+   
+  #ketigabtn {
+    position:absolute;
+    top:560px;
+    left:32%;
+    transform:translate(-50%,-50%);
+    padding:15px;
+    font-size:16px;
+    border:2px solid #222;
+    color:white;
+    text-transform:uppercase;
+    font-weight:600;
+    background:rgb(45, 209, 39);
+    border-radius: 10px;;
+    width: 160px;
+    height: 40px;
+    border-color:rgb(45, 209, 39);
+  }
+
+  /* keempat */
+  .popups2 .overlays2 {
+    position:fixed;
+    top:0px;
+    left:0px;
+    width:100vw;
+    height:100vh;
+    background:rgba(0,0,0,0.7);
+    z-index:1;
+    display:none;
+  }
+   
+  .popups2 .contents2 {
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%) scale(0);
+    background:#fff;
+    width:500px;
+    height:250px;
+    z-index:2;
+    text-align:center;
+    padding:20px;
+    box-sizing:border-box;
+    font-family:"Open Sans",sans-serif;
+  }
+   
+  .popups2 .close-btns2 {
+    cursor:pointer;
+    position:absolute;
+    right:170px;
+    width:160px;
+    height:40px;
+    background:#222;
+    color:#fff;
+    font-size:25px;
+    font-weight:600;
+    line-height:30px;
+    text-align:center;
+    margin-top: 150px;
+    border-radius: 10px;
+    background-color: rgb(45, 209, 39);
+  }
+   
+  .oks{
+    font-size: 16px;
+  }
+   
+  .popups2.active .overlays2 {
+    display:block;
+  }
+   
+  .popups2.active .contents2 {
+    transition:all 300ms ease-in-out;
+    transform:translate(-50%,-50%) scale(1);
+  }
+   
+  #keempatbtn {
+    position:absolute;
+    top:444px;
+    left:83%;
+    transform:translate(-50%,-50%);
+    padding:15px;
+    font-size:16px;
+    border:2px solid #222;
+    color:white;
+    text-transform:uppercase;
+    font-weight:600;
+    background:rgb(45, 209, 39);
+    border-radius: 10px;;
+    width: 160px;
+    height: 40px;
+    border-color:rgb(45, 209, 39);
+  }
+
+  /* kelima */
+  .popups3 .overlays3 {
+    position:fixed;
+    top:0px;
+    left:0px;
+    width:100vw;
+    height:100vh;
+    background:rgba(0,0,0,0.7);
+    z-index:1;
+    display:none;
+  }
+   
+  .popups3 .contents3 {
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%) scale(0);
+    background:#fff;
+    width:500px;
+    height:250px;
+    z-index:2;
+    text-align:center;
+    padding:20px;
+    box-sizing:border-box;
+    font-family:"Open Sans",sans-serif;
+  }
+   
+  .popups3 .close-btns3 {
+    cursor:pointer;
+    position:absolute;
+    right:170px;
+    width:160px;
+    height:40px;
+    background:#222;
+    color:#fff;
+    font-size:25px;
+    font-weight:600;
+    line-height:30px;
+    text-align:center;
+    margin-top: 150px;
+    border-radius: 10px;
+    background-color: rgb(45, 209, 39);
+  }
+   
+  .oks{
+    font-size: 16px;
+  }
+  .popups3.active .overlays3 {
+    display:block;
+  }
+   
+  .popups3.active .contents3 {
+    transition:all 300ms ease-in-out;
+    transform:translate(-50%,-50%) scale(1);
+  }
+   
+  #kelimabtn {
+    position:absolute;
+    top:500px;
+    left:83%;
+    transform:translate(-50%,-50%);
+    padding:15px;
+    font-size:16px;
+    border:2px solid #222;
+    color:white;
+    text-transform:uppercase;
+    font-weight:600;
+    background:rgb(45, 209, 39);
+    border-radius: 10px;;
+    width: 160px;
+    height: 40px;
+    border-color:rgb(45, 209, 39);
+  }
+
+  /* keenam */
+  .popups4 .overlays4 {
+    position:fixed;
+    top:0px;
+    left:0px;
+    width:100vw;
+    height:100vh;
+    background:rgba(0,0,0,0.7);
+    z-index:1;
+    display:none;
+  }
+   
+  .popups4 .contents4 {
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%) scale(0);
+    background:#fff;
+    width:500px;
+    height:250px;
+    z-index:2;
+    text-align:center;
+    padding:20px;
+    box-sizing:border-box;
+    font-family:"Open Sans",sans-serif;
+  }
+   
+  .popups4 .close-btns4 {
+    cursor:pointer;
+    position:absolute;
+    right:150px;
+    width:200px;
+    height:40px;
+    background:#222;
+    color:#fff;
+    font-size:25px;
+    font-weight:600;
+    line-height:30px;
+    text-align:center;
+    margin-top: 150px;
+    border-radius: 10px;
+    background-color: rgb(45, 209, 39);
+  }
+   
+  .oks{
+    font-size: 16px;
+  }
+
+  .popups4.active .overlays4 {
+    display:block;
+  }
+   
+  .popups4.active .contents4 {
+    transition:all 300ms ease-in-out;
+    transform:translate(-50%,-50%) scale(1);
+  }
+   
+  #keenambtn {
+    position:absolute;
+    top:560px;
+    left:83%;
+    transform:translate(-50%,-50%);
+    padding:15px;
+    font-size:16px;
+    border:2px solid #222;
+    color:white;
+    text-transform:uppercase;
+    font-weight:600;
+    background:rgb(45, 209, 39);
+    border-radius: 10px;
+    width: 160px;
+    height: 40px;
+    border-color:rgb(45, 209, 39);
+  }
+  .verifusr{
+    font-weight: bold;
+    font-family: 'Quicksand', sans-serif;
+    margin-top: -7px;
+  }
+  .vf{
+    font-weight: bold;
+    font-family: 'Quicksand', sans-serif;
+    color: black;
+    font-size: 24px;
+    margin-top: 70px;
+  }

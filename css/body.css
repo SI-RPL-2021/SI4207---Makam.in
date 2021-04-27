@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap');
+.tebel-banget {
+    font-weight: 200;
+  }
+  
+.tebel-sedang {
+    font-weight: bold;
+    float: right;
+    text-align: right;
+}
+
+.right{
+  float:right;
+  text-align: right;
+}
+
+.desc{
+  float:right;
+  font-size: 15px;
+  text-align: right;
+  margin-right: -70px;
+  color: gray;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.judul1{
+    color: #000000;
+    font-size: 50px;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.judul2{
+    color: #69A614;
+}
+
+.hr{
+    height: 5px;
+    width: 75px;
+    border-radius: 50px;
+    background-color: rgb(45, 209, 39);
+    float: right;
+}
+
+.button {
+    background-color: rgb(45, 209, 39);
+    border: none;
+    color: white;
+    padding: 16px 48px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    transition: 0.3s;
+    float: right;
+  }
+  
+  .button:hover {
+    background-image: linear-gradient(to right, #1f3c0f 0%, #52830d 49%);
+    color: white;
+  }
+  
+
+.gambar{
+  display: none;
+}
+
+.img{
+  width: 600px;
+  z-index: -1;
+  float: left;
+  position: absolute;
+  margin-left: -40px;
+}
+
