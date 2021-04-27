@@ -1,0 +1,238 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap');
+/* navbar */
+.card{
+    margin: 70%;
+    width: 220%;
+    height: 80%;
+    float: left;
+    justify-content: left;
+    align-items: left;
+    margin-left: 0px;
+    text-align: left;
+    font-family: 'Quicksand', sans-serif;
+    margin-top: 15%;
+    box-shadow: 2px 3px 3px 1px grey;
+}
+.form-label{
+    margin-left: 9%;
+    font-family: 'Quicksand', sans-serif;
+    color: grey;
+}
+.form-control{
+    width: 80%;
+    text-align: center;
+    margin-left: 8%;
+    border-radius: 10px;
+}
+#buttons{
+    font-weight: bolder;
+    width: 187%;
+    margin-left: 10%;
+    margin-bottom: 8%;
+    border-radius: 10px;
+    background-color: rgb(45, 209, 39);
+    border: none;
+}
+ #buttons:hover{
+     background-color:rgb(35, 145, 31);
+ }
+.login{
+    text-align: center;
+    margin: 10px;
+}
+.daftar{
+    text-align: center;
+    margin: 10px;
+    margin-bottom: 10px;
+    color: grey;
+    font-weight: bold;
+}
+.daftarmember{
+    font-weight: bold;
+    color: rgb(47, 236, 41);
+    cursor: pointer;
+    text-decoration: none;
+}
+
+/* radio */
+#checks{
+    margin-left: 25px;
+}
+#checks:hover{
+    border-color: rgb(47, 236, 41);
+    background-color: rgb(47, 236, 41);
+}
+.sandi{
+    float: right;
+    text-align: right;
+    margin-right: -210px;
+    margin-top: 6px;
+    cursor: pointer;
+    color: grey;
+    font-weight: bold;
+    text-decoration: none;
+    color: rgb(47, 236, 41);
+}
+.form-check-label{
+    color: grey;
+}
+.admins{
+    float: right;
+    text-align: right;
+    margin-right: -270px;
+    margin-bottom: -200px;
+    margin-top: 90px;
+    font-weight: bold;
+    color: rgb(47, 236, 41);
+    font-size: 13px;
+    text-decoration: none;
+}
+.admins:hover{
+    color: rgb(60, 188, 55);
+}
+.sandi:hover{
+    color: rgb(60, 188, 55);
+}
+.daftarmember:hover{
+    color: rgb(60, 193, 55 );
+    background-color: none;
+}
+.admins .h6:hover{
+    color: rgb(60, 188, 55);
+}
+/* logo navbar */
+.logoset{
+    width: 200px;
+    margin-left: 450px;
+}
+
+/* image login */
+.imagelogin{
+    width: 35%;
+    height: 45%;
+    float: right;
+    position: absolute;
+    top: 20%;
+    right: 10%;
+}
+
+/* Sewa lahan */
+.rows{
+    font-family: 'Quicksand', sans-serif;
+    font-weight: bold;
+    text-align: center;
+    float: right;
+    margin-top: 400px;
+    margin-right:  200px;
+}
+.sewalahan{
+    font-family: 'Quicksand', sans-serif;
+    font-weight: bold;
+}
+.gabung{
+    font-family: 'Quicksand', sans-serif;
+    font-weight: bold;
+    color: grey;
+    font-size: 12px;
+}
+/* dropdown */
+.dropdown-toggle{
+width: 100%;
+margin-bottom: -300px;
+text-align: left;
+background-color: rgb(193, 241, 190);
+border-color:rgb(193, 241, 190);
+color: rgb(48, 219, 42);
+font-weight: bolder;
+font-family: 'Quicksand', sans-serif;
+border-radius: 10px;
+}
+
+.bi-chevron-down{
+    float: right;
+    font-weight: bold;
+    width: 25px;
+    
+}
+.dropdown-toggle:hover{
+    background-color: rgb(193, 241, 190);
+    color:rgb(60, 193, 55 );
+    font-weight: bold;
+    font-family: 'Quicksand', sans-serif;
+}
+.dropdown-toggle::after{
+    display: none;
+}
+.dropdown-item{
+    background-color: rgb(193, 241, 190);
+    width: 1118px;
+    height: 380px;
+    font-weight: bolder;
+    font-family: 'Quicksand', sans-serif;
+    
+}
+.dropdown-menu{
+    background-color: rgb(193, 241, 190);
+    border-radius: 10px;
+    font-weight: bolder;
+    font-family: 'Quicksand', sans-serif;
+    
+}
+.dropdown-item:hover{
+    background-color: rgb(193, 241, 190);
+    color:black;
+    font-weight: bold;
+    font-family: 'Quicksand', sans-serif;
+}
+.syarat{
+    font-size: 14px;
+}
+
+/* dropdown 2 */
+.dropdown-toggles{
+    width: 100%;
+    margin-bottom: -400px;
+    text-align: left;
+    background-color: rgb(193, 241, 190);
+    border-color:rgb(193, 241, 190);
+    color: rgb(48, 219, 42);
+    font-weight: bold;
+    font-family: 'Quicksand', sans-serif;
+    border-radius: 10px;
+    }
+.dropdown-toggles:hover{
+        background-color: rgb(193, 241, 190);
+        color:rgb(60, 193, 55 );
+        font-weight: bold;
+        font-family: 'Quicksand', sans-serif;
+    }
+.dropdown-toggles::after{
+        display: none;
+    }
+
+    /* dropdown 3 */
+    .dropdown-toggless{
+        width: 100%;
+        margin-bottom: -500px;
+        text-align: left;
+        background-color: rgb(193, 241, 190);
+        border-color:rgb(193, 241, 190);
+        color: rgb(48, 219, 42);
+        font-weight: bold;
+        font-family: 'Quicksand', sans-serif;
+        border-radius: 10px;
+        }
+    .dropdown-toggles:hover{
+            background-color: rgb(193, 241, 190);
+            color:rgb(60, 193, 55 );
+            font-weight: bold;
+            font-family: 'Quicksand', sans-serif;
+        }
+    .dropdown-toggles::after{
+            display: none;
+        }
+    
+/* Active navar anisa */
+.users{
+    color:rgb(45, 209, 39);
+}

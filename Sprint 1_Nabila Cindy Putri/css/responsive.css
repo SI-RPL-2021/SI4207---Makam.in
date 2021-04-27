@@ -1,0 +1,193 @@
+/* mengatur responsive */
+@media screen and (max-width: 600px) {
+    .img{
+      display: none;
+      width: 500px;
+    }
+  
+    .gambar{
+      display: block;
+    }
+  }
+  
+  @media screen and (max-width: 800px) {
+    .img{
+      display: none;
+      width: 500px;
+    }
+  
+    .gambar{
+      display: block;
+    }
+  
+  }
+  
+  @media screen and (max-width: 1199px) {
+    .img{
+      width: 500px;
+      z-index: -1;
+    }
+  
+  }
+  
+  @media screen and (max-width: 992px) {
+    .img{
+      width: 300px;
+      z-index: -1;
+    }
+  
+  }
+
+  /* image login */
+  
+  @media screen and (max-width: 600px){
+    .imagelogin{
+      display: none;
+      width: 500px
+    }
+
+    .imagelogin{
+      display: block;
+    }
+  }
+
+  @media screen and (max-width: 800px){
+    .imagelogin{
+      display: none;
+      width: 500px
+    }
+
+    .imagelogin{
+      display: block;
+    }
+  }
+
+  @media screen and (max-width: 1199px) {
+    .imagelogin{
+      width: 500px;
+      z-index: -1;
+    }
+  
+  }
+  
+  @media screen and (max-width: 992px) {
+    .imagelogin{
+      width: 300px;
+      z-index: -1;
+    }
+  }
+  
+  /* Card */
+
+  @media screen and (max-width: 600px){
+    .card{
+      display: none;
+      width: 500px
+    }
+
+    .card{
+      display: block;
+    }
+  }
+
+  @media screen and (max-width: 800px){
+    .card{
+      display: none;
+      width: 500px
+    }
+
+    .card{
+      display: block;
+    }
+  }
+
+  @media screen and (max-width: 1199px) {
+    .card{
+      width: 500px;
+      z-index: -1;
+    }
+  
+  }
+  
+  @media screen and (max-width: 992px) {
+    .card{
+      width: 300px;
+      z-index: -1;
+    }
+  }
+
+  /* Card Body */
+  @media screen and (max-width: 600px){
+    .card-body{
+      display: none;
+      width: 500px
+    }
+
+    .card-body{
+      display: block;
+    }
+  }
+
+  @media screen and (max-width: 800px){
+    .card-body{
+      display: none;
+      width: 500px
+    }
+
+    .card-body{
+      display: block;
+    }
+  }
+
+  @media screen and (max-width: 1199px) {
+    .card-body{
+      width: 500px;
+      z-index: -1;
+    }
+  
+  }
+  
+  @media screen and (max-width: 992px) {
+    .card-body{
+      width: 300px;
+      z-index: -1;
+    }
+  }
+
+  /* buttons */
+  @media screen and (max-width: 600px){
+    #buttons{
+      display: none;
+      width: 500px
+    }
+
+    #buttons{
+      display: block;
+    }
+  }
+
+  @media screen and (max-width: 800px){
+    #buttons{
+      display: none;
+      width: 500px
+    }
+
+    #buttons{
+      display: block;
+    }
+  }
+
+  @media screen and (max-width: 1199px) {
+    #buttons{
+      width: 500px;
+      z-index: -1;
+    }
+  
+  }
+  
+  @media screen and (max-width: 992px) {
+    #buttons{
+      width: 300px;
+      z-index: -1;
+    }
+  }

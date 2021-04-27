@@ -1,0 +1,33 @@
+#alertberanda{
+    width: 83%;
+    position: absolute;
+    top: 90px;
+    height: 40px;
+    left: 112px;
+    border-radius: 10px;
+}
+.sebelum{
+    font-family: 'Quicksand', sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+    position: absolute;
+    top: 10px;
+    color: red;
+}
+.klikaku{
+    font-family: 'Quicksand', sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+    position: absolute;
+    top: 0px;
+    color: rgb(45, 209, 39);
+    width: 140px;
+    right: -170px;
+    cursor: pointer;
+    text-decoration: none;
+}
+.klikaku:hover{
+    font-family: 'Quicksand', sans-serif;
+    font-weight: bold;
+    color: rgb(35, 145, 31);
+}
