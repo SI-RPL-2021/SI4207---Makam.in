@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap');
+/* navbar */
+.card{
+    margin: 180px;
+    width: 140%;
+    height: 85%;
+    float: left;
+    justify-content: left;
+    align-items: left;
+    margin-left: 0px;
+    text-align: left;
+    font-family: 'Quicksand', sans-serif;
+    margin-top: 60px;
+    box-shadow: 2px 3px 3px 1px grey;
+}
+
+#buttons{
+    font-weight: bolder;
+    width: 155%;
+    height: 45px;
+    margin-left: 70px;
+    margin-bottom: -230px;
+    border-radius: 10px;
+    background-color: rgb(45, 209, 39);
+    border: none;
+    margin-top: -350px;
+    
+}
+#buttons1{
+    font-weight: bolder;
+    width: 155%;
+    height: 45px;
+    margin-left: 70px;
+    margin-bottom: -450px;
+    border-radius: 10px;
+    background-color: rgb(45, 209, 39);
+    border: none;
+    margin-top: -450px;
+}
+ #buttons:hover{
+     background-color:rgb(35, 145, 31);
+ }
+ #buttons1:hover{
+    background-color:rgb(35, 145, 31);
+}
+.logins{
+    text-align: center;
+    padding: 90px;
+    margin-top: 100px;
+}
+
+
+/* image login */
+.imagelogin{
+    width: 42%;
+    height: 42%;
+    float: right;
+    margin-bottom: -700px;
+    margin-right: -10px;
+    margin-top: 100px;
+}
+
+/* User Hijau */
+.users{
+    color:rgb(45, 209, 39);
+}
+
+
+/* Lanjutan Sewa Web */
+.form-check-inline{
+ border: 2px solid rgb(208, 243, 174);
+ width: 210%;
+ height: 35px;
+ border-radius: 10px;
+ background-color: rgb(208, 243, 174);
+ margin-top: 10px;
+}
+.form-check-input{
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    transform: translate(2540%, 0%);
+}
+.kafling{
+    margin-left: 200px;
+}
+.kaflings{
+    margin-left: 178px;
+}
+.kafling1{
+    margin-left: 186px;
+}
+.form-check-label{
+    margin: 2px;
+    margin-left: -10px;
+    color:rgb(45, 209, 39);
+}
+
+
+/* alert */
+.alert-warning{
+    width: 210%;
+    height: 30px;
+    margin-top: -80px;
+    border-radius: 10px;
+    color: red;
+    font-weight: bold;
+}
+.alerts{
+    margin-top: -12px;
+    
+}
+#btn-primaryz{
+    margin-bottom: -320px;
+    margin-left: 450px;
+    width: 100px;
+    border-radius: 10px;
+    background-color: rgb(45, 209, 39);
+    border-color: rgb(45, 209, 39);
+}
+.logins{
+    margin-top: -100px;
+}
+#btn-primaryz:hover{
+    background-color: rgb(35, 145, 31);
+    border-color: rgb(35, 145, 31);
+}
+#inlineRadio1{
+    cursor: pointer;
+}
