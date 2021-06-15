@@ -15,6 +15,8 @@ if ($_SESSION['verif']=="no") {
 
 }elseif ($_SESSION['verif']=="wait") {
 
+}elseif ($_SESSION['verif']=="new") {
+
 }else{
 header("Location: ../../login/"); 
 }
@@ -34,7 +36,6 @@ while ($view = mysqli_fetch_array($view)) {
   $verifs = $view['verif'];
   $emails = $view['email'];
   $telps = $view['telp'];
-  $passwords = md5($view['password']);
 }
 ?>
 <!doctype html>
@@ -68,7 +69,7 @@ while ($view = mysqli_fetch_array($view)) {
                               if ($verifs=="yes") {
                                 echo "Rubah Data Identitas Diri Pengguna";
                               } elseif ($verifs=="no") {
-                                echo "Data Identitas Diri Pengguna (Sesuai KTP)";
+                                echo "Data Identitas Diri Pengguna (Sesuai KTP) <p style='color:red;'>[Ditolak]</p>";
                               } elseif ($verifs=="wait") {
                                 echo "Data Identitas Diri Pengguna (Sesuai KTP) <p style='color:#a8a8a9;'>[Menunggu Konfirmasi Admin]</p>";
                               } else {
@@ -77,9 +78,9 @@ while ($view = mysqli_fetch_array($view)) {
                               ?>
                               </h5>
 
-                              <!-- jika status verif is no -->
+                              <!-- jika status verif is new -->
                               <?php
-                              if ($verifs=="no") {
+                              if ($verifs=="new") {
                               ?>
                               <form action="../../assets/e-identitas-proses/index.php" method="post">
                               <table border="0">
@@ -160,6 +161,92 @@ while ($view = mysqli_fetch_array($view)) {
                               </table>
                               </form>
 
+                              <!-- jika status verif is no -->
+                              <?php
+                              } elseif ($verifs=="no") {
+                              ?>
+                              <form action="../../assets/e-identitas-proses/index.php" method="post">
+                              <table border="0">
+                                <tr>
+                                  <td><label for="formGroupExampleInput" class="namapemohon"><span class="mat">*</span> NIK</label>
+                                  <input type="hidden" name="id_user" value="<?=$id_user?>">
+                                  <input type="hidden" name="verif" value="wait"></td>
+                                  <input type="hidden" name="email" value="<?=$emails?>">
+                                  <td><label for="formGroupExampleInput" class="namapemohon"><span class="mat">*</span> Kewarganegaraan</label></td>
+                                </tr>
+                                <tr>
+                                  <td><input type="text" name="nik" class="form-control" id="labelsewatanah" placeholder="317XXXXXXXXXXXXX" required="" value="<?=$niks?>"></td>
+                                  <td><input type="text" name="negara" name="negara" class="form-control" id="labelsewatanah" placeholder="Kewarganegaraan" required="" value="<?=$negaras?>"></td>
+                                </tr>
+                                <tr>
+                                  <td><label for="formGroupExampleInput" class="namapemohon"><span class="mat">*</span> Nama Lengkap</label></td>
+                                  <td><label for="formGroupExampleInput" class="namapemohon"><span class="mat">*</span> Jenis Kelamin</label></td>
+                                </tr>
+                                <tr>
+                                  <td><input type="text" name="nama" class="form-control" id="labelsewatanah" placeholder="Nama Lengkap" required="" value="<?=$namas?>"></td>
+                                  <td><select name="gender" class="form-control" id="labelsewatanah" placeholder="Jenis Kelamin" required="">
+                                    <option value="Pria">Pria</option>
+                                    <option value="Wanita">Wanita</option>
+                                    <option value="<?=$genders?>" selected hidden><?=$genders?></option>
+                                  </select></td>
+                                </tr>
+                                <tr>
+                                  <td><label for="formGroupExampleInput" class="namapemohon"><span class="mat">*</span> Tempat Lahir</label></td>
+                                  <td><label for="formGroupExampleInput" class="namapemohon"><span class="mat">*</span> Tanggal Lahir</label></td>
+                                </tr>
+                                <tr>
+                                  <td><input type="text" name="tempat_lahir" class="form-control" id="labelsewatanah" placeholder="Tempat Lahir" required="" value="<?=$tempat_lahirs?>"></td>
+                                  <td><input type="date" name="tanggal_lahir" class="form-control" id="labelsewatanah" required="" value="<?=$tanggal_lahirs?>"></td>
+                                </tr>
+                                <tr>
+                                  <td><label for="formGroupExampleInput" class="namapemohon"><span class="mat">*</span> Pekerjaan</label></td>
+                                  <td><label for="formGroupExampleInput" class="namapemohon"><span class="mat">*</span> Agama</label></td>
+                                </tr>
+                                <tr>
+                                  <td><input type="text" name="pekerjaan" class="form-control" id="labelsewatanah" placeholder="Pekerjaan" required="" value="<?=$pekerjaans?>"></td>
+                                  <td><select type="text" name="agama" class="form-control" id="labelsewatanah" placeholder="Agama" required="">
+                                    <option value="Islam">Islam</option>
+                                    <option value="Kristen">Kristen</option>
+                                    <option value="Budha">Budha</option>
+                                    <option value="Hindu">Hindu</option>
+                                    <option value="Tionghoa">Tionghoa</option>
+                                    <option value="<?=$agamas?>" selected hidden><?=$agamas?></option>
+                                  </select></td>
+                                </tr>
+                                <tr>
+                                  <td><label for="formGroupExampleInput" class="namapemohon"><span class="mat">*</span>Alamat Lengkap</label></td>
+                                  <td><label for="formGroupExampleInput" class="namapemohon"><span class="mat">*</span> Status Perkawinan</label></td>
+                                </tr>
+                                <tr>
+                                  <td><textarea class="form-control" name="alamat" id="labelsewatanah" rows="3" placeholder="Alamat" required=""><?=$alamats?></textarea></td>
+                                  <td><select name="kawin" class="form-control" id="labelsewatanah" placeholder="Status Kawin" style="text-align: center;" required="">
+                                    <option value="Kawin">Kawin</option>
+                                    <option value="Belum Kawin">Belum Kawin</option>
+                                    <option value="Cerai Hidup">Cerai Hidup</option>
+                                    <option value="Cerai Mati">Cerai Mati</option>
+                                    <option value="<?=$kawins?>" selected hidden><?=$kawins?></option>
+                                  </select></td>
+                                </tr>
+                                <tr>
+                                  <td><label for="formGroupExampleInput" class="namapemohon"><span class="mat">*</span> Email</label></td>
+                                  <td><label for="formGroupExampleInput" class="namapemohon"><span class="mat">*</span> Telepon</label></td>
+                                </tr>
+                                <tr>
+                                  <td><input type="text" class="form-control" name="email" id="labelsewatanah" placeholder="Email" required="" value="<?=$emails?>"></td>
+                                  <td><input type="number" class="form-control" name="telp" id="labelsewatanah" placeholder="Telepon" required="" value="<?=$telps?>"></td>
+                                </tr>
+                                <tr hidden="">
+                                  <td><label for="formGroupExampleInput" class="namapemohon"><span class="mat">*</span> Ganti Password Baru</label></td>
+                                  <!-- <td><label for="formGroupExampleInput" class="namapemohon"><span class="mat">*</span> Telepon</label></td> -->
+                                </tr>
+                                <tr hidden="">
+                                  <td><input type="password" class="form-control" name="password" id="labelsewatanah" placeholder="Password" required="" disabled=""></td>
+                                  <!-- <td><input type="number" class="form-control" name="telp" id="labelsewatanah" placeholder="Telepon" required="" disabled value="<?=$telps?>"></td> -->
+                                </tr>
+                                <tr><td><input type="submit" name="submit" class="form-control" id="labelsewatanah" style="margin-left: 50%;background-color: rgb(45, 209, 39);color: white; font-weight: bold; font-family: 'Quicksand', sans-serif; text-decoration: none;" value="UPDATE"></td></tr>
+                              </table>
+                              </form>
+
                               <!-- jika status verif is wait -->
                               <?php
                               } elseif($verifs=="wait") {
@@ -214,6 +301,7 @@ while ($view = mysqli_fetch_array($view)) {
                                     <option value="Budha"></option>
                                     <option value="Hindu"></option>
                                     <option value="Tionghoa"></option>
+                                    <option value="<?=$agamas?>" selected><?=$agamas?></option>
                                   </datalist>
                                 </tr>
                                 <tr>
@@ -228,6 +316,7 @@ while ($view = mysqli_fetch_array($view)) {
                                     <option value="Belum Kawin"></option>
                                     <option value="Cerai Hidup"></option>
                                     <option value="Cerai Mati"></option>
+                                    <option value="<?=$kawins?>" selected><?=$kawins?></option>
                                   </datalist>
                                 </tr>
                                 <tr hidden="">
@@ -246,7 +335,7 @@ while ($view = mysqli_fetch_array($view)) {
                                   <td><input type="password" class="form-control" name="password" id="labelsewatanah" placeholder="Password" required="" disabled="" value=""></td>
                                   <!-- <td><input type="number" class="form-control" name="telp" id="labelsewatanah" placeholder="Telepon" required="" disabled value="<?=$telps?>"></td> -->
                                 </tr>
-                                <tr><td><input type="submit" name="submit" class="form-control" id="labelsewatanah" style="margin-left: 50%;background-color: #e9ecef;color: black; font-weight: bold; font-family: 'Quicksand', sans-serif; text-decoration: none;" value="SIMPAN" disabled></td></tr>
+                                <tr><td><input type="submit" name="submit" class="form-control" id="labelsewatanah" style="margin-left: 50%;background-color: #e9ecef;color: black; font-weight: bold; font-family: 'Quicksand', sans-serif; text-decoration: none;" value="Menunggu Konfirmasi" disabled></td></tr>
                               </table>
                               </form>
 
@@ -305,6 +394,7 @@ while ($view = mysqli_fetch_array($view)) {
                                     <option value="Budha">Budha</option>
                                     <option value="Hindu">Hindu</option>
                                     <option value="Tionghoa">Tionghoa</option>
+                                    <option value="<?=$agamas?>" selected><?=$agamas?></option>
                                   </select></td>
                                 </tr>
                                 <tr>
@@ -318,6 +408,7 @@ while ($view = mysqli_fetch_array($view)) {
                                     <option value="Belum Kawin">Belum Kawin</option>
                                     <option value="Cerai Hidup">Cerai Hidup</option>
                                     <option value="Cerai Mati">Cerai Mati</option>
+                                    <option value="<?=$kawins?>" selected><?=$kawins?></option>
                                   </select></td>
                                 </tr>
                                 <tr>
@@ -326,9 +417,9 @@ while ($view = mysqli_fetch_array($view)) {
                                 </tr>
                                 <tr>
                                   <!-- <td><input type="number" class="form-control" name="telp" id="labelsewatanah" placeholder="Telepon" required="" value="<?=$telps?>"></td> -->
-                                  <td colspan="2"><input type="password" class="form-control" name="password" id="labelsewatanah" placeholder="Password" required="" value=""></td>
+                                  <td colspan="2"><input type="password" class="form-control" name="password" id="labelsewatanah" placeholder="Password"></td>
                                 </tr>
-                                <tr><td><input type="submit" name="submit" class="form-control" id="labelsewatanah" style="margin-left: 50%;background-color: rgb(45, 209, 39);color: white; font-weight: bold; font-family: 'Quicksand', sans-serif; text-decoration: none;" value="SIMPAN"></td></tr>
+                                <tr><td><input type="submit" name="submit" class="form-control" id="labelsewatanah" style="margin-left: 50%;background-color: rgb(45, 209, 39);color: white; font-weight: bold; font-family: 'Quicksand', sans-serif; text-decoration: none;" value="UPDATE"></td></tr>
                               </table>
                               </form>
                               <?php

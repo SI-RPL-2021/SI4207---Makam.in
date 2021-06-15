@@ -13,6 +13,10 @@ if ($_SESSION['verif']=="yes") {
 
 }elseif ($_SESSION['verif']=="no") {
 
+}elseif ($_SESSION['verif']=="wait") {
+
+}elseif ($_SESSION['verif']=="new") {
+
 }else{
 header("Location: ../login/"); 
 }
@@ -90,7 +94,8 @@ while ($view = mysqli_fetch_array($view)) {
                                 <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z"/>
                                 <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
                               </svg>
-                          <a href="../assets/logout-proses/"><span class="lgt">Logout</span></a>
+                            <a href="e-identitas/"><span class="lgt">Rubah Profile</span></a>
+                            <a href="../assets/logout-proses/"><span class="lgt">Logout</span></a>
                         </div>
                     </div> 
                 </ul>
@@ -101,21 +106,22 @@ while ($view = mysqli_fetch_array($view)) {
 
     <!-- konten -->
     <div class="container">
-    <br><br>
     <div class="alert alert-warning" role="alert" id="alertberanda" <?php if ($verifs=="yes") {
         echo "hidden";
     } else {
         echo "";
     } 
     ?>>
-  <h3 class="sebelum">
+    <h3 class="sebelum">
     <?php 
     if ($verifs=="yes") {
     echo "";
-    } elseif ($verifs=="no") {
+    } elseif ($verifs=="new") {
     echo "Sebelum melakukan pendaftaran sewa/perpanjangan, harap mengisi identitas diri Anda terlebih dahulu.";
     } elseif ($verifs=="wait") {
     echo "Menunggu konfirmasi Admin, Harap bersabar dan tenang :)";
+    } elseif ($verifs=="no") {
+    echo "Verifikasi ditolak, silahkan masukkan identitas diri yang baru :)";
     } else {
     echo "Sebelum melakukan pendaftaran sewa/perpanjangan, harap mengisi identitas diri Anda terlebih dahulu.";
     }
@@ -158,6 +164,5 @@ while ($view = mysqli_fetch_array($view)) {
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="../bs5/dist/js/bootstrap.bundle.js"></script>
     <script src="../js/onscroll.js"></script>
-
   </body>
 </html>

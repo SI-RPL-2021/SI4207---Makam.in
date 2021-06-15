@@ -1,6 +1,6 @@
 <?php
-session_start();
 include '../connection.php';
+date_default_timezone_set('Asia/Jakarta');
 if (isset($_POST['submit'])) {
 	$id_user = $_POST['id_user'];
 	$nama = $_POST['nama'];
@@ -16,19 +16,16 @@ if (isset($_POST['submit'])) {
 	$agama = $_POST['agama'];
 	$pekerjaan = $_POST['pekerjaan'];
 	$verif = $_POST['verif'];
+  	$bulan_count = date("m");
+    $tahun_count = date("Y");
 	$password = $_POST['password'];
-	if (isset($password)) {
+	if ($password!="") {
 		$passwords = md5($password);
-		if (isset($telp)) {
-			$update = mysqli_query($mysqli, "UPDATE `user` SET `nama` = '$nama', `password` = '$passwords', `email` = '$email', `telp` = '$telp', `nik` = '$nik', `tempat_lahir` = '$tempat_lahir', `tanggal_lahir` = '$tanggal_lahir', `kawin` = '$kawin', `alamat` = '$alamat', `negara` = '$negara', `gender` = '$gender', `agama` = '$agama', `pekerjaan` = '$pekerjaan', `verif` = '$verif' WHERE `user`.`id_user` = '$id_user'");
-			header("Location: ../../user/e-identitas/#popup");
-		} else {
-			$update = mysqli_query($mysqli, "UPDATE `user` SET `nama` = '$nama', `password` = '$passwords', `email` = '$email', `nik` = '$nik', `tempat_lahir` = '$tempat_lahir', `tanggal_lahir` = '$tanggal_lahir', `kawin` = '$kawin', `alamat` = '$alamat', `negara` = '$negara', `gender` = '$gender', `agama` = '$agama', `pekerjaan` = '$pekerjaan', `verif` = '$verif' WHERE `user`.`id_user` = '$id_user'");
-			header("Location: ../../user/e-identitas/#popup");
-		}
+		$update = mysqli_query($mysqli, "UPDATE `user` SET `nama` = '$nama', `password` = '$passwords', `email` = '$email', `telp` = '$telp', `nik` = '$nik', `tempat_lahir` = '$tempat_lahir', `tanggal_lahir` = '$tanggal_lahir', `kawin` = '$kawin', `alamat` = '$alamat', `negara` = '$negara', `gender` = '$gender', `agama` = '$agama', `pekerjaan` = '$pekerjaan', `verif` = '$verif' WHERE `user`.`id_user` = '$id_user'");
+		header("Location: ../../user/e-identitas/#popup");
 	} else {
 		$result = mysqli_query($mysqli, "UPDATE `user` SET `nama` = '$nama', `email` = '$email', `telp` = '$telp', `nik` = '$nik', `tempat_lahir` = '$tempat_lahir', `tanggal_lahir` = '$tanggal_lahir', `kawin` = '$kawin', `alamat` = '$alamat', `negara` = '$negara', `gender` = '$gender', `agama` = '$agama', `pekerjaan` = '$pekerjaan', `verif` = '$verif' WHERE `user`.`id_user` = '$id_user'");
-		header("Location: ../../user/e-identitas/#popup");
+			header("Location: ../../user/e-identitas/#popup");
 	}	
 }
 ?>

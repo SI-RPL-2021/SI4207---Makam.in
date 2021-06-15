@@ -30,7 +30,7 @@ if (isset($_GET['msg'])) {
     <link rel="stylesheet" href="css/body.css">
     <link rel="stylesheet" href="css/responsive.css">
     <link rel="stylesheet" href="css/styleform.css">
-    <link rel="icon" href="./assets/logonisan.png">
+    <link rel="icon" href="assets/logonisan.png">
     <title>Makam.in</title>
   </head>
   <body>
@@ -82,14 +82,10 @@ if (isset($_GET['msg'])) {
 
         <div class="row mt-5 mb-5">
 
-            <div class="col-lg-12 gambar">
-                <img src="./assets/nisan.png" width="100%">
-            </div>
-
             <div class="col-sm-12 position-relative p-4">
 
                 <div class="top-0 end-0">
-                    <img src="./assets/nisan.png" class="img float-left" >
+                    <img src="assets/nisan.png" class="img float-left" style="width: 600px;position: absolute;float: left;margin-left: -40px;">
                 </div>
                     <br>
                     <br>

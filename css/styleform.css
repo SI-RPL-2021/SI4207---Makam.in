@@ -171,13 +171,22 @@ border-radius: 10px;
     font-family: 'Quicksand', sans-serif;
     
 }
+#items{
+    width: 1116px;
+    height: 40%;
+    text-decoration: none;
+    font-family: 'Quicksand', sans-serif;
+    color: #000;
+}
 .dropdown-menu{
     background-color: rgb(193, 241, 190);
     border-radius: 10px;
     font-weight: bolder;
-    font-family: 'Quicksand', sans-serif;
-    
+    font-family: 'Quicksand', sans-serif;   
 }
+
+
+
 .dropdown-item:hover{
     background-color: rgb(193, 241, 190);
     color:black;
@@ -186,7 +195,19 @@ border-radius: 10px;
 }
 .syarat{
     font-size: 14px;
+    font-family: 'Quicksand', sans-serif;
 }
+.syarat1{
+    font-size: 14px;
+    font-family: 'Quicksand', sans-serif;
+    margin: 15px;
+}
+.sewatnh{
+   position: absolute;
+   top: 10px;
+}
+
+
 
 /* dropdown 2 */
 .dropdown-toggles{
@@ -211,16 +232,18 @@ border-radius: 10px;
     }
 
     /* dropdown 3 */
-    .dropdown-toggless{
-        width: 100%;
-        margin-bottom: -500px;
-        text-align: left;
+    #coba{
+        width: 82%;
+        position: absolute;
+        top: 44%;
+        left: 9%;
         background-color: rgb(193, 241, 190);
         border-color:rgb(193, 241, 190);
         color: rgb(48, 219, 42);
         font-weight: bold;
         font-family: 'Quicksand', sans-serif;
         border-radius: 10px;
+        text-align: left;
         }
     .dropdown-toggles:hover{
             background-color: rgb(193, 241, 190);
@@ -236,3 +259,17 @@ border-radius: 10px;
 .users{
     color:rgb(45, 209, 39);
 }
+@media screen and (max-width: 771px) {
+    #coba{
+        width: 90%;
+        top: 50%;
+        left: 5%;
+    }
+    .dropdown-menu{
+        width: 90%;
+    }
+    #items{
+        width: 100%;
+    }
+}
+

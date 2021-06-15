@@ -2,6 +2,7 @@
 error_reporting(0);
 include_once("../../assets/connection.php");
 session_start();
+date_default_timezone_set("Asia/Jakarta");
 if ($_SESSION['status']=="admin") {
 header("Location: ../../admin/");
 }elseif ($_SESSION['status']=="user") {
@@ -37,6 +38,11 @@ while ($view = mysqli_fetch_array($view)) {
 $bank = mysqli_query($mysqli, "SELECT * FROM bank");
 $id_transaksi = $_GET['transaksi'];
 $bayar = mysqli_query($mysqli, "SELECT * FROM transaksi WHERE id_transaksi='$id_transaksi' AND id_user='$id_user'");
+$bayars = mysqli_query($mysqli, "SELECT * FROM transaksi WHERE id_transaksi='$id_transaksi' AND id_user='$id_user'");
+function rupiah($angka){
+    $hasil_rupiah = "Rp ".number_format($angka,0,',','.');
+    return $hasil_rupiah;
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -91,14 +97,44 @@ $bayar = mysqli_query($mysqli, "SELECT * FROM transaksi WHERE id_transaksi='$id_
                     <div class="col-md-8 col-lg-8 col-sm-12 col-xs-12" >
                     </div>
                     <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12" >
-                        <p style="float:right;">Tanggal Invoice :</p>
+                        <p style="float:right;">Tanggal & Waktu Invoice :</p>
                     </div>
                 </div>
                 <div class="row clearfix">
                     <div class="col-md-8 col-lg-8 col-sm-12 col-xs-12" >
                     </div>
                     <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12" >
-                        <p style="float:right;"><?php echo "".date("l/d/m/Y"); ?></p>
+                        <p style="float:right;"><?php echo "".date("l d-M-Y"); ?>, <?php echo "".date("h:i:s a"); ?></p>
+                    </div>
+                </div>
+                <div class="row clearfix">
+                    <div class="col-md-8 col-lg-8 col-sm-12 col-xs-12" >
+                    </div>
+                    <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12" >
+                        <?php
+                        while ($status = mysqli_fetch_array($bayars)) {?>
+                        <p style="float:right;">Status : 
+                            <?php 
+                            if($status['paid']=="yes"){
+                                if($status['verif']=="yes"){?>
+                                    <span style="color: rgb(45, 209, 39);">Terverifikasi</span>
+                                    <?php 
+                                }elseif($status['verif']=="no"){?>
+                                    <span style="color: red;">Ditolak, Silahkan Ajukan Ulang Resi Pembayaran</span>
+                                    <?php 
+                                }else{?>
+                                    <span style="color: grey;">Menunggu Verifikasi</span>
+                                    <?php
+                                }
+                            }else{?>
+                                <span style="color: grey;">Menunggu Verifikasi</span>
+                                <?php 
+                            }
+                            ?>
+                        </p>
+                        <?php
+                        }
+                        ?>
                     </div>
                 </div>
                 <div class="row clearfix" style="padding-top:50px;">
@@ -109,10 +145,11 @@ $bayar = mysqli_query($mysqli, "SELECT * FROM transaksi WHERE id_transaksi='$id_
                             <thead>
                                 <tr>
                                     <th style="width:5%; text-align: center; border-bottom: 1px solid black;border-right: 1px solid black;">No</th>
-                                    <th style="width:30%;border-bottom: 1px solid black;border-right: 1px solid black;">Nama Produk</th>
+                                    <th style="width:33%;border-bottom: 1px solid black;border-right: 1px solid black;">Nama Produk</th>
                                     <th style="width:10%; text-align: center;border-bottom: 1px solid black;border-right: 1px solid black;">Jumlah</th>
-                                    <th style="width:25%; text-align: right;border-bottom: 1px solid black;border-right: 1px solid black;">Harga</th>
-                                    <th style="text-align: right;padding-right: 5%;border-bottom: 1px solid black;">Total</th>
+                                    <th style="width:18%; text-align: right;border-bottom: 1px solid black;border-right: 1px solid black;">Harga</th>
+                                    <th style="width:12%; text-align: center;border-bottom: 1px solid black;border-right: 1px solid black;">Jangka</th>
+                                    <th style="width:22%;  text-align: right;padding-right: 5%;border-bottom: 1px solid black;">Total</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -120,8 +157,14 @@ $bayar = mysqli_query($mysqli, "SELECT * FROM transaksi WHERE id_transaksi='$id_
                                 while ($b = mysqli_fetch_array($bayar)) {
                                     $id_sewa = $b['id_sewa'];
                                     $pajak = $b['pajak'];
-                                    $penyewa_makam = mysqli_query($mysqli, "SELECT * FROM penyewa_makam WHERE id_sewa='$id_sewa'");
-                                    while ($s = mysqli_fetch_array($penyewa_makam)) {
+                                    $tipe = $b['tipe'];
+                                    if ($tipe=="lahan") {
+                                        $penyewa = mysqli_query($mysqli, "SELECT * FROM penyewa_makam WHERE id_sewa='$id_sewa'");
+                                    }
+                                    if ($tipe=="jasa") {
+                                        $penyewa = mysqli_query($mysqli, "SELECT * FROM penyewa_jasa WHERE id_sewa='$id_sewa'");
+                                    }
+                                    while ($s = mysqli_fetch_array($penyewa)) {
                                         $jumlah = $s['jumlah'];
                                         $id_makam = $s['id_makam'];
                                         $blok = $s['blok'];
@@ -131,29 +174,50 @@ $bayar = mysqli_query($mysqli, "SELECT * FROM transaksi WHERE id_transaksi='$id_
                                             $paket = mysqli_query($mysqli, "SELECT * FROM paket_sewa WHERE jumlah='$jumlah'");
                                             while ($p = mysqli_fetch_array($paket)) {
                                                 $nama_paket = $p['nama_paket'];
-                                                $total_harga = mysqli_query($mysqli, "SELECT * FROM makam_stok WHERE blok = '$blok' AND id_makam = '$id_makam'");
-                                                while ($t = mysqli_fetch_array($total_harga)) {
+                                                if ($tipe=="lahan") {
+                                                    $total_harga = mysqli_query($mysqli, "SELECT * FROM makam_stok WHERE blok = '$blok' AND id_makam = '$id_makam'");
+                                                    $t = mysqli_fetch_array($total_harga);
                                                     $harga_makam = $t['harga'];
-                                                    $tiga_tahun = 1095;
-                                                    $totalin_harga = $harga_makam*$jumlah*$tiga_tahun;
+                                                    $totalin_harga = $b['total'];
                                                     $pembayaran = $totalin_harga+$pajak;
+                                                } elseif ($tipe=="jasa") {
+                                                    $totalin_harga = $b['total'];
+                                                    $pembayaran = $totalin_harga+$pajak;
+                                                }
                                 ?>
                                 <tr>
                                     <td style="text-align: center;border-right: 1px solid black;"><?=$no++?></td>
                                     <td style="border-right: 1px solid black;"><?=$m['nama']?></td>
                                     <td style="text-align: center;border-right: 1px solid black;"><?=$b['unit']?></td>
-                                    <td style="text-align: right;"><?=$harga_makam?></td>
-                                    <td style="text-align: right;border-left: 1px solid black;"><?=$totalin_harga?></td>
+                                    <?php
+                                    if ($tipe=="lahan") {?>
+                                        <td style="text-align: right;border-right: 1px solid black;"><?=rupiah($harga_makam)?></td>
+                                        <?php
+                                    } elseif ($tipe=="jasa") {?>
+                                        <td style="text-align: right;border-right: 1px solid black;"><?=rupiah(80000)?></td>
+                                        <?php
+                                    }
+                                    ?>
+                                    <?php
+                                    if ($tipe=="lahan") {?>
+                                        <td style="text-align: center;">3 Tahun</td>
+                                        <?php
+                                    } elseif ($tipe=="jasa") {?>
+                                        <td style="text-align: center;">1 Bulan</td>
+                                        <?php
+                                    }
+                                    ?>
+                                    <td style="text-align: right;border-left: 1px solid black;"><?=rupiah($totalin_harga)?></td>
                                 </tr>
                             </tbody>
                             <tfoot>
                             <tr>
-                                <th colspan="4" style="text-align: right;border-top: 1px solid black;">Pajak</th>
-                                <td style="text-align: right;border-left: 1px solid black;"><?=$pajak?></td>
+                                <th colspan="5" style="text-align: right;border-top: 1px solid black;">Pajak</th>
+                                <td style="text-align: right;border-left: 1px solid black;"><?=rupiah($pajak)?></td>
                             </tr>
                             <tr>
-                                <th colspan="4" style="border-top: 1px solid black; border-right: 1px solid black;">Total Pembayaran</th>
-                                <th style="text-align: right;border-top: 1px solid black;">Rp. <?=$pembayaran?></th>
+                                <th colspan="5" style="border-top: 1px solid black; border-right: 1px solid black;">Total Pembayaran</th>
+                                <th style="text-align: right;border-top: 1px solid black;"><?=rupiah($pembayaran)?></th>
                             </tr>
                             </tfoot>
                         </table>
@@ -164,14 +228,17 @@ $bayar = mysqli_query($mysqli, "SELECT * FROM transaksi WHERE id_transaksi='$id_
                             <p style="text-decoration: underline;">Detail Pembelian</p>
                             <p>Nama Pemohon : <?=$b['nama']?></p>
                             <p>Nama Makam : <?=$m['nama']?></p>
-                            <p>Alama :</p>
-                            <p><?=$m['kecamatan']?>, <?=$m['kota']?>, <?=$m['kode_pos']?></p>
-                            <p>Blok : <?=$t['blok']?></p>
+                            <p>Blok : <?=$s['blok']?></p>
                             <p>Jumlah Unit : <?=$b['unit']?></p>
+                            <p>Pembayaran menggunakan : <?=$b['metode_bayar']?></p>
+                            <br>
+                            <p style="text-decoration: underline;">Alamat Makam</p>
+                            <p><?=$m['alamat']?></p>
+                            <p><?=$m['kecamatan']?>, <?=$m['kota']?>, <?=$m['kode_pos']?></p>
                         </div>
                     </div>
                     <?php
-                       }}}}}
+                       }}}}
                     ?>
 
                     <div class="row clearfix" style="padding-top:20px;">

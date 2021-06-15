@@ -35,7 +35,11 @@ while ($view = mysqli_fetch_array($view)) {
   $passwords = $view['password'];
 }
 $bank = mysqli_query($mysqli, "SELECT * FROM bank");
-$invoice = mysqli_query($mysqli, "SELECT * FROM transaksi WHERE id_user='$id_user'");
+$invoice = mysqli_query($mysqli, "SELECT * FROM transaksi WHERE id_user='$id_user' AND verif!='yes'");
+function rupiah($angka){
+    $hasil_rupiah = "Rp ".number_format($angka,0,',','.');
+    return $hasil_rupiah;
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -89,11 +93,12 @@ $invoice = mysqli_query($mysqli, "SELECT * FROM transaksi WHERE id_user='$id_use
                           <i class="fa fa-caret-down"></i>
                         </button>
                         <div class="dropdown-content">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="46" height="26" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16" id="logout">
-                                <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z"/>
-                                <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
-                              </svg>
-                          <a href="../../../assets/logout-proses/"><span class="lgt">Logout</span></a>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="46" height="26" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16" id="logout">
+                            <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z"/>
+                            <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
+                          </svg>
+                          <a href="../user/e-identitas/"><span class="lgt">Rubah Profile</span></a>
+                          <a href="../assets/logout-proses/"><span class="lgt">Logout</span></a>
                         </div>
                     </div> 
                 </ul>
@@ -105,13 +110,13 @@ $invoice = mysqli_query($mysqli, "SELECT * FROM transaksi WHERE id_user='$id_use
     <div class="container">
       <table border="1" width="100%" style="margin-top: 13%;">
         <tr>
-            <th style="text-align: center;">Tipe</th>
-            <th style="border-left: 1px solid black;">Nama</th>
-            <th style="text-align: center;border-left: 1px solid black;">Jumlah</th>
-            <th style="text-align: center;border-left: 1px solid black;">Total</th>
-            <th style="text-align: center;border-left: 1px solid black;">Status</th>
-            <th style="text-align: center;border-left: 1px solid black;">Deskripsi</th>
-            <th colspan="2" style="text-align: center;border-left: 1px solid black;">...</th>
+            <th style="width: 5%; text-align: center;">Tipe</th>
+            <th style="width: 45%; border-left: 1px solid black;">Nama</th>
+            <th style="width: 5%; text-align: center;border-left: 1px solid black;">Jumlah</th>
+            <th style="width: 15%; text-align: center;border-left: 1px solid black;">Total</th>
+            <th style="width: 10%; text-align: center;border-left: 1px solid black;">Status</th>
+            <th style="width: 10%; text-align: center;border-left: 1px solid black;">Deskripsi</th>
+            <th colspan="3" style="width: 10%; text-align: center;border-left: 1px solid black;">Tindakan</th>
         </tr>
         <?php
         while ($view = mysqli_fetch_array($invoice)) {
@@ -120,7 +125,9 @@ $invoice = mysqli_query($mysqli, "SELECT * FROM transaksi WHERE id_user='$id_use
           <td style="text-align: center;border-top: 1px solid black;"><?=$view['tipe'];?></td>
           <td style="border-left: 1px solid black;border-top: 1px solid black;">
           <?php
+          echo $view['id_transaksi']." | ";
           if ($view['tipe']=="lahan") {
+          echo $view['nama']." | ";
           $id_sewa = $view['id_sewa'];
           $sewa = mysqli_query($mysqli, "SELECT * FROM penyewa_makam WHERE id_sewa='$id_sewa' AND id_user='$id_user'");
           while ($s = mysqli_fetch_array($sewa)) {
@@ -158,7 +165,7 @@ $invoice = mysqli_query($mysqli, "SELECT * FROM transaksi WHERE id_user='$id_use
           ?>            
           </td>
           <td style="text-align: center;border-left: 1px solid black;border-top: 1px solid black;"><?=$view['unit']?></td>
-          <td style="text-align: center;border-left: 1px solid black;border-top: 1px solid black;"><?=$view['total']?></td>
+          <td style="text-align: right;border-left: 1px solid black;border-top: 1px solid black;"><?=rupiah($view['total'])?></td>
           <td style="text-align: center;border-left: 1px solid black;border-top: 1px solid black;">
           <?php if ($view['paid']=="wait") {
             echo "Belum Terbayar";
@@ -168,9 +175,10 @@ $invoice = mysqli_query($mysqli, "SELECT * FROM transaksi WHERE id_user='$id_use
             echo "Belum Terbayar";
           }?>
           </td>
-          <td style="text-align: center;border-left: 1px solid black;border-top: 1px solid black;"><?=$view['deskripsi']?></td>
+          <td style="text-align: center;border-left: 1px solid black;border-top: 1px solid black;"><?php if($view['deskripsi']=="renew lahan"){echo "Perpanjang Masa Lahan";}elseif($view['deskripsi']=="renew jasa"){echo "Perpanjang Masa Jasa";}else{echo "Penyewaan";}?></td>
+          <td style="text-align: center;border-left: 1px solid black;border-top: 1px solid black;"><a href="../stats/?transaksi=<?=$view['id_transaksi'];?>">Cek</a></td>
           <td style="text-align: center;border-left: 1px solid black;border-top: 1px solid black;"><a href="invoice/?transaksi=<?=$view['id_transaksi'];?>">Bayar</a></td>
-          <td style="text-align: center;border-top: 1px solid black;"><a href="../assets/delete-invoice/?transaksi=<?=$view['id_transaksi']?>&sewa=<?=$view['id_sewa']?>&tipe=<?=$view['tipe']?>&renew=<?=$view['id_renew']?>">Delete</a></td>
+          <td style="text-align: center;border-left: 1px solid black;border-top: 1px solid black;"><a href="../assets/delete-invoice/?transaksi=<?=$view['id_transaksi']?>&sewa=<?=$view['id_sewa']?>&tipe=<?=$view['tipe']?>&renew=<?=$view['id_renew']?>">Delete</a></td>
         </tr>
         <?php 
         }
@@ -179,26 +187,12 @@ $invoice = mysqli_query($mysqli, "SELECT * FROM transaksi WHERE id_user='$id_use
     </div>
           
 
-<!-- <div id="popup">
-    <div class="window">
-        <h1 class="berhasils">Upload Bukti Pembayaran</h1>
-        <p class="contentbayar">Pastikan foto bukti pembayaran menampilkan : <br>
-        - Tanggal dan waktu transfer<br>
-        - Detail penerima transfer  <br>
-        - Jumlah tagihan transfer <br>
-        - Status (berhasil) <br>
-        </p>
-        <div class="imageups">
-          <svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-file-earmark-image" viewBox="0 0 16 16" id="imageicons">
-            <path d="M6.502 7a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
-            <path d="M14 14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5V14zM4 1a1 1 0 0 0-1 1v10l2.224-2.224a.5.5 0 0 1 .61-.075L8 11l2.157-3.02a.5.5 0 0 1 .76-.063L13 10V4.5h-2A1.5 1.5 0 0 1 9.5 3V1H4z"/>
-          </svg>
-          <button type="button" class="pilih" >Pilih File</button>
-          <p class="milih">IMG_0671-2021</p>
-        </div>
-       <a href="./beranda_alert.html" class="close-button" title="Close"><span class="ok">Kirim</span></a>
+<div id="popup">
+    <div class="window" style="width: 700px; height: 200px;top: 0;">
+      <h1 class="berhasils" style="top: 40px;">Data Berhasil Terhapus!</h1>
+      <a href="#" class="close-button" title="Close" style="height: 40px; width: 250px;top: 120px;left: 220px;"><span class="ok">OK</span></a>
     </div>
-</div> -->
+</div>
           
         
     <!-- Option 1: Bootstrap Bundle with Popper -->

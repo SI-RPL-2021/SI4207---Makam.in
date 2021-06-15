@@ -16,26 +16,32 @@
 	$id_renew = $_GET['renew'];
 
 	if ($tipe=="lahan") {
-		if (isset($id_renew)) {
+		if ($id_renew!="") {
 			$delete_invoice = mysqli_query($mysqli, "DELETE FROM transaksi WHERE id_transaksi='$id_transaksi' AND id_sewa='$id_sewa' AND id_user='$id_user' AND id_renew='$id_renew'");
-			header("Location: ../../bayar/");
 		} else {
+			$penyewa_makam = mysqli_query($mysqli, "SELECT * FROM penyewa_makam WHERE id_sewa='$id_sewa' AND id_user='$id_user'");
+			$sewa = mysqli_fetch_array($penyewa_makam);
+			$id_makam = $sewa['id_makam'];
+			$blok = $sewa['blok'];
+			$makam_stok = mysqli_query($mysqli, "SELECT * FROM makam_stok WHERE id_makam='$id_makam' AND blok='$blok'");
+			$stoks = mysqli_fetch_array($makam_stok);
+			$stok_tambah = 1;
+			$total_stok = $stoks['stok']+$stok_tambah;
+			$update_stok = mysqli_query($mysqli, "UPDATE makam_stok SET stok='$total_stok' WHERE id_makam='$id_makam' AND blok='$blok'");
 			$delete_invoice = mysqli_query($mysqli, "DELETE FROM transaksi WHERE id_transaksi='$id_transaksi' AND id_sewa='$id_sewa' AND id_user='$id_user'");
 			$delete_penyewa_makam = mysqli_query($mysqli, "DELETE FROM penyewa_makam WHERE id_sewa='$id_sewa' AND id_user='$id_user'");
-			header("Location: ../../bayar/");
 		}
+
 		
 	} elseif ($tipe=="jasa") {
-		if (isset($id_renew)) {
+		if ($id_renew!="") {
 			$delete_invoice_jasa = mysqli_query($mysqli, "DELETE FROM transaksi WHERE id_transaksi='$id_transaksi' AND id_sewa='$id_sewa' AND id_user='$id_user' AND id_renew='$id_renew'");
-			header("Location: ../../bayar/");
 		} else {
 			$delete_invoice_jasa = mysqli_query($mysqli, "DELETE FROM transaksi WHERE id_transaksi='$id_transaksi' AND id_sewa='$id_sewa' AND id_user='$id_user'");
 			$delete_penyewa_jasa = mysqli_query($mysqli, "DELETE FROM penyewa_jasa WHERE id_sewa='$id_sewa' AND id_user='$id_user'");
-			header("Location: ../../bayar/");
 		}
 	} else {
 		header("Location: ../../bayar/");
 	}
-	
+	header("Location: ../../bayar/#popup");
 ?>

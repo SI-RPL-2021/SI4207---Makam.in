@@ -37,6 +37,10 @@ while ($view = mysqli_fetch_array($view)) {
 $bank = mysqli_query($mysqli, "SELECT * FROM bank");
 $id_transaksi = $_GET['transaksi'];
 $bayar = mysqli_query($mysqli, "SELECT * FROM transaksi WHERE id_transaksi='$id_transaksi' AND id_user='$id_user'");
+function rupiah($angka){
+    $hasil_rupiah = "Rp ".number_format($angka,0,',','.');
+    return $hasil_rupiah;
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -90,10 +94,11 @@ $bayar = mysqli_query($mysqli, "SELECT * FROM transaksi WHERE id_transaksi='$id_
                           <i class="fa fa-caret-down"></i>
                         </button>
                         <div class="dropdown-content">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="46" height="26" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16" id="logout">
-                                <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z"/>
-                                <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
-                              </svg>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="46" height="26" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16" id="logout">
+                            <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z"/>
+                            <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
+                          </svg>
+                          <a href="../../user/e-identitas/"><span class="lgt">Rubah Profile</span></a>
                           <a href="../../assets/logout-proses/"><span class="lgt">Logout</span></a>
                         </div>
                     </div> 
@@ -104,6 +109,7 @@ $bayar = mysqli_query($mysqli, "SELECT * FROM transaksi WHERE id_transaksi='$id_
     </nav>
     <!-- konten -->
     <div class="container">
+      <a href="../" style="margin-left: 3%;"><button type="button" style="color: white;margin-top: 12%;background-color: rgb(45, 209, 39);width: 150px;height: 30px;border-radius: 10px;border: none;font-weight: bold;font-family: 'Quicksand', sans-serif;"><p class="back">Back</p></button></a>
       <form action="../../assets/cek-bank-proses/index.php" method="post">
       <input type="hidden" name="id_transaksi" value="<?=$id_transaksi?>"> 
       <table border="0" width="100%">
@@ -112,7 +118,7 @@ $bayar = mysqli_query($mysqli, "SELECT * FROM transaksi WHERE id_transaksi='$id_
             $total_bayar = $invoice['total']+$invoice['pajak'];
           ?>
         <tr>
-          <td colspan="2"><h1 class="tagihan" style="margin-bottom: 0;margin-top: 11%;">Informasi Tagihan</h1></td>
+          <td colspan="2"><h1 class="tagihan" style="margin-bottom: 0;margin-top: 0;">Informasi Tagihan</h1></td>
         </tr>
         <tr>
           <td><h2 class="datapemohon1">DATA PEMOHON TAGIHAN</h2></td>
@@ -120,12 +126,31 @@ $bayar = mysqli_query($mysqli, "SELECT * FROM transaksi WHERE id_transaksi='$id_
         </tr>
         <tr>
           <td><h2 class="namapemohons">Nama</h2></td>
-          <td><select name="metode_bayar" class="form-control" style="border-radius: 15px; border-color: rgb(45, 209, 39);">
+          <td>
             <?php
+            if ($invoice['paid']=="yes") {
+              if ($invoice['verif']=="yes") {?>
+                <select name="metode_bayar" class="form-control" style="border-radius: 15px; border-color: rgb(45, 209, 39);" readonly>
+                <?php
+              } elseif ($invoice['verif']=="wait") {?>
+                <select name="metode_bayar" class="form-control" style="border-radius: 15px; border-color: rgb(45, 209, 39);" readonly>
+                <?php
+              } else {?>
+                <select name="metode_bayar" class="form-control" style="border-radius: 15px; border-color: rgb(45, 209, 39);">
+                <?php
+              }
+            } else {?>
+              <select name="metode_bayar" class="form-control" style="border-radius: 15px; border-color: rgb(45, 209, 39);">
+              <?php
+            }
             while ($ba = mysqli_fetch_array($bank)) {
             ?>
-            <option value="<?=$ba['merek']?>"><?=$ba['merek']?></option>
+            <option value="<?=$ba['merek']?>" <?php if($invoice['paid']!="yes"){}else{if($invoice['verif']=="yes"){?>disabled <?php }elseif($invoice['verif']=="wait"){?>disabled <?php }else{}}?>><?=$ba['merek']?></option>
             <?php
+            }
+            if($invoice['paid']=="yes") {?>
+              <option value="<?=$invoice['metode_bayar']?>" selected hidden><?=$invoice['metode_bayar']?></option>
+              <?php
             }
             ?>
           </select>
@@ -157,12 +182,17 @@ $bayar = mysqli_query($mysqli, "SELECT * FROM transaksi WHERE id_transaksi='$id_
         <tr>
           <td><h2 class="datapemohon" style="margin-top: 0;padding-bottom: 1%;"><?php if(isset($invoice['id_transaksi'])){echo $invoice['id_transaksi'];}else{echo $invoice['id_renew'];}?></h2></td>
           <td>
-            <?php if($invoice['verif']=="yes"){?>
-              <p style='color: rgb(45, 209, 39);margin: 0;float: right;'>[Terverifikasi Dan Lunas]</p>
+            <?php 
+            if($invoice['paid']=="yes"){?>
+              <p style='color: rgb(45, 209, 39);margin: 0;float: right;'>[Lunas]</p>
               <?php
-            }elseif($invoice['paid']=="yes"){?>
-              <p style='color:#a8a8a9;margin: 0;float: right;'>[Menunggu Konfirmasi Admin]</p><p style='color: rgb(45, 209, 39);margin: 0;float: right;'>[Lunas]</p>
-              <?php
+              if($invoice['verif']=="yes"){?>
+                <p style='color: rgb(45, 209, 39);margin: 0;float: right;'>[Terverifikasi]</p>
+                <?php
+              } elseif ($invoice['verif']=="no"){?>
+                <p style='color: red;margin: 0;float: right;'>[Mohon Ajukan Ulang Resi Pembayaran]</p>
+                <?php
+              }
             }else{?>
               <p style='color:#a8a8a9;margin: 0;float: right;'></p>
               <?php
@@ -174,7 +204,7 @@ $bayar = mysqli_query($mysqli, "SELECT * FROM transaksi WHERE id_transaksi='$id_
           <td colspan="2"><h2 class="tagihanpemohon" style="margin-top: 0;margin-bottom: 0;padding-bottom: 0.5%;">Ringkasan Tagihan</h2></td>
         </tr>
         <tr>
-          <td colspan="2"><h2 class="perpanjangtanah"><?php if($invoice['tipe']=="perpanjang_lahan"){echo "Perpanjangan ";}elseif($invoice['tipe']=="perpanjang_jasa"){echo "Perpanjangan ";}else{echo "Penyewaan ";} if($invoice['tipe']=="perpanjang_lahan"){echo "Lahan";}elseif($invoice['tipe']=="perpanjang_jasa"){echo "Jasa";}else{echo $invoice['tipe'];}?><span class="angkasewa" style="margin: 0;float: right;"><?=$invoice['total']?></span></h2></td>
+          <td colspan="2"><h2 class="perpanjangtanah"><?php if($invoice['tipe']=="perpanjang_lahan"){echo "Perpanjangan ";}elseif($invoice['tipe']=="perpanjang_jasa"){echo "Perpanjangan ";}else{echo "Penyewaan ";} if($invoice['tipe']=="perpanjang_lahan"){echo "Lahan";}elseif($invoice['tipe']=="perpanjang_jasa"){echo "Jasa";}else{echo $invoice['tipe'];}?><span class="angkasewa" style="margin: 0;float: right;"><?=rupiah($invoice['total'])?></span></h2></td>
         </tr>
         <tr>
           <td colspan="2"><h2 class="perpanjangtanah">Pajak (PPN) <span class="angkasewa0" style="margin: 0;float: right;"><?=$invoice['pajak']?></span></h2></td>
@@ -184,13 +214,26 @@ $bayar = mysqli_query($mysqli, "SELECT * FROM transaksi WHERE id_transaksi='$id_
         </tr>
         <tr>
           <td>
-            <?php if($invoice['paid'] == "yes"){?>
-            <input type="hidden" name="status"  value="cetak">
-            <input type="submit" name="cek" id="buttonbayar" style=" margin: 0;right: 0;left: 57.5%;bottom: 1%;width: 35%;" value="Cetak Nota">
-            <?php }else {?>
-            <input type="hidden" name="status"  value="bayar">
-            <input type="submit" name="cek" id="buttonbayar" style=" margin: 0;right: 0;left: 57.5%;bottom: 1%;width: 35%;" value="Konfirmasi Pembayaran">
-            <?php }?>  
+            <?php if($invoice['paid'] == "yes"){
+              if ($invoice['verif']=="wait") {?>
+                <input type="hidden" name="status"  value="cetak">
+                <input type="submit" name="cek" id="buttonbayar" style=" margin: 0;right: 0;left: 57.5%;bottom: 1%;width: 35%;" value="Cetak Nota">
+                <?php
+              } elseif ($invoice['verif']=="yes") {?>
+                <input type="hidden" name="status"  value="cetak">
+                <input type="submit" name="cek" id="buttonbayar" style=" margin: 0;right: 0;left: 57.5%;bottom: 1%;width: 35%;" value="Cetak Nota">
+                <?php
+              } else {?>
+                <input type="hidden" name="status"  value="bayar">
+                <input type="submit" name="cek" id="buttonbayar" style=" margin: 0;right: 0;left: 57.5%;bottom: 1%;width: 35%;" value="Konfirmasi Pembayaran">
+                <?php
+              }
+            }else {?>
+              <input type="hidden" name="status"  value="bayar">
+              <input type="submit" name="cek" id="buttonbayar" style=" margin: 0;right: 0;left: 57.5%;bottom: 1%;width: 35%;" value="Konfirmasi Pembayaran">
+            <?php 
+            }
+            ?>  
           </td>
         </tr>
         <?php
@@ -200,7 +243,7 @@ $bayar = mysqli_query($mysqli, "SELECT * FROM transaksi WHERE id_transaksi='$id_
       </form>
     </div>
           
-
+<!-- POPUP -->
 <div id="popup">
   <?php 
   $id_transaksi = $_GET['transaksi'];
@@ -276,21 +319,42 @@ $bayar = mysqli_query($mysqli, "SELECT * FROM transaksi WHERE id_transaksi='$id_
           ?>
           <td colspan="2">
             <center>
-              <?php if($invoice['paid'] != "yes"){?>
-              <input type="file" name="resis_transfer[]" multiple  accept=".jpg,.JPG,.jpeg,.JPEG,.png,.PNG" class="input-group" id="pilih" style="position: static;top: 0;left: 0;" required="">
-              <?php }?>
+              <?php 
+              if($invoice['paid'] != "yes"){?>
+                <input type="file" name="resis_transfer[]" multiple  accept=".jpg,.JPG,.jpeg,.JPEG,.png,.PNG" class="input-group" id="pilih" style="position: static;top: 0;left: 0;" required="">
+                <?php 
+              } else {
+                if ($invoice['verif']=="no") {?>
+                  <input type="file" name="resis_transfer[]" multiple  accept=".jpg,.JPG,.jpeg,.JPEG,.png,.PNG" class="input-group" id="pilih" style="position: static;top: 0;left: 0;" required="">
+                  <?php
+                }
+              }
+              ?>
             </center>
           </td>
         </tr>
         <tr>
           <td colspan="2">
           <center>
-            <?php if($invoice['paid'] == "yes"){?>
-            <a href="../../bayar/cetak/?transaksi=<?=$id_transaksi?>" target="_blank" class="close-button">Cetak</a>
-            <td colspan="2"><a href="../../bayar/invoice/?transaksi=<?=$id_transaksi?>" class="close-button" style="top: 90%;">Selesai</a></td>
-            <?php } else{?>
+            <?php 
+            if($invoice['paid'] == "yes"){
+              if ($invoice['verif']=="yes") {?>
+                <a href="../../bayar/cetak/?transaksi=<?=$id_transaksi?>" target="_blank" class="close-button">Cetak</a>
+                <td colspan="2"><a href="../../bayar/invoice/?transaksi=<?=$id_transaksi?>" class="close-button" style="top: 90%;">Selesai</a></td>
+                <?php
+              } elseif ($invoice['verif']=="wait") {?>
+                <a href="../../bayar/cetak/?transaksi=<?=$id_transaksi?>" target="_blank" class="close-button">Cetak</a>
+                <td colspan="2"><a href="../../bayar/invoice/?transaksi=<?=$id_transaksi?>" class="close-button" style="top: 90%;">Selesai</a></td>
+                <?php
+              } else {?>
+                <input type="submit" name="submit" class="close-button" title="Close" style="top: 0;position: static;left: 0;" value="Upload">
+                <?php
+              }
+            } else {?>
               <input type="submit" name="submit" class="close-button" title="Close" style="top: 0;position: static;left: 0;" value="Upload">
-            <?php }?>
+            <?php 
+          }
+          ?>
           </center> 
           </td>          
         </tr>
